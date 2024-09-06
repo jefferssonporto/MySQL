@@ -17,8 +17,18 @@ Coleção -  Enum, Set
 Espacial - Geometry, Point, Polygon, MultiPolygon
 
 COMANDOS:
+
 Use nomedoDataBase; - Selecionar o Database 
 describe nomedatabela; - aparece o desenho da tabela
 show database; - aparece os database criados
 show tables - mostrar nome das tabelas
 status - Current database, nome do database selecionado
+drop database nomedoDataBase - deleta o Database
+Default Character Set utf8 - caracteres com ascentuação latina
+Default Collate utf8_general_ci; - Definição dos caracteres
+Not Null - Campos Obrigatóriamente digitáveis
+Enum ('M','F') ou set ('M','F') - Seleciona quais são os valores que serão aceitos
+decimal (5,2) - Quantidade de total de digitos e quantidade de digitos depois da virgula
+Default Brasil - se ninguem digitar nada, por padrão será "Brasil"
+Primary key - chave primaria, impede que haja cadastros iguais.
+
