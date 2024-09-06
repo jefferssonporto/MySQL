@@ -1,0 +1,24 @@
+TIPOS PRIMITIVOS
+
+Numérico: 
+Inteiro - Tinyint, Smallint, Int, MediumInt, BigInt.
+Real - Decimal, Float, Double, Real
+Lógico - Bit, Boolean
+
+Data/Tempo:
+Date, DateTime, TimeStamp, Time, Year
+
+Literal:
+Caractere -  Char,VarChar
+Texto - TinyText, Text, MediumText, LongText
+Binário - TinyBlob, Blob, MediumBlob, LongBlob
+Coleção -  Enum, Set
+
+Espacial - Geometry, Point, Polygon, MultiPolygon
+
+COMANDOS:
+Use nomedoDataBase; - Selecionar o Database 
+describe nomedatabela; - aparece o desenho da tabela
+show database; - aparece os database criados
+show tables - mostrar nome das tabelas
+status - Current database, nome do database selecionado
