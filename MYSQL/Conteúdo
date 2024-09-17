@@ -19,8 +19,8 @@ Espacial - Geometry, Point, Polygon, MultiPolygon
 Observação:
 Constraint - não tem aspas
 Default - Padrão 
-DDL - Data Definition Language / Create Database Create Table.
-DML - Data Manipulation Language / Insert Into 
+DDL - Data Definition Language / Create Database; Create Table; Drop Table; Alter Table
+DML - Data Manipulation Language / Insert Into; UPDATE; DELETE; TRUNCATE.
 
 
 COMANDOS:
@@ -39,4 +39,15 @@ decimal (5,2) - Quantidade de total de digitos e quantidade de digitos depois da
 Default Brasil - se ninguem digitar nada, por padrão será "Brasil"
 Primary key - chave primaria, impede que haja cadastros iguais.
 VarChar - guarda até 30 letras
+AlterTable - Alterar tabela 
+insert into - inserir dados
+UNIQUE - não deixa colocar 2 cursos com o mesmo nome
+unsigned - (sem sinal) Economiza 1byte para cada registro que tem a carga registrada
 
+
+/*Salvar uma cópia do Banco de Dados EXPORT e IMPORT */
+SERVER - DATA EXPORT - SELECIONA O DATABASE E O SCHEMA - START EXPORT
+/*Criará um DUMP do seu DATABASE e selecionar a opção INCLUDE CREATE SCHEMA*/
+
+/*Vai importar o DATABASE já pronto*/
+SERVER - DATA IMPORT - SELECIONA O DATABASE - START IMPORT

@@ -1,0 +1,74 @@
+/* Criação da Tabela*/ 
+
+create table if not exists cursos (
+nome varchar(30) not null unique,
+descricao text,
+carga int unsigned, 
+totaulas int unsigned,
+ano year default '2016'
+) default charset =utf8;
+
+/* Adicionando separadamente a chave primaria*/ 
+
+alter table cursos
+add column idcurso int first;
+
+alter table cursos
+add primary key (idcurso);
+
+/* Adicionando valores a Tabela */
+insert into cursos values
+('1','HTML4 ' , 'Curso de HTML5', '40', '37', '2014'),
+('2','Algoritmos ' , 'Lógica de Programação', '20', '15', '2014'),
+('3','Photoshop ' , 'Dicas de Photoshop CC', '10', '8', '2014'),
+('4','PGP ' , 'Curso de PHP para iniciantes', '40', '20', '2010'),
+('5','Jarva ' , 'Introdução a Linguagem Java', '10', '29', '2000'),
+('6','MySQL ' , 'Banco de Dados MySQL', '30', '15', '2016'),
+('7','Word ' , 'Curso Completo de Word', '40', '30', '2016'),
+('8','Sapateado ' , 'Danças Ritmicas', '40', '30', '2018'),
+('9' ,' Cozinha Árabe' , 'Aprenda a fazer Kibe', '40', '30', '2018'),
+('10' ,'Youtuber ' , 'Gerar Polemicas e ganhar inscritos','5', '2', '2018');
+
+/* Alterando o nome da linha da tabela */
+update cursos /* modificar a tabela cursos*/
+set nome = 'HTML5' /* modificar o nome da tabela nome para html5*/
+where idcurso = '1'; /* onde o ID seja 1*/
+
+/* Alterar a duas linhas ao mesmo tempo ano e nome */
+update cursos
+set nome = 'PHP', ano = '2015'
+where idcurso = '4' ;	
+/* Para alterar o nome das linhas basta ir colocando as informações ao lado do nome 2º exemplo*/
+update cursos
+set nome = 'Java', carga = '40', ano = '2015' /* alterou nome, carga e ano*/
+where idcurso = '5' ;	
+
+/* Limt para limitar a quantidade de linhas afetadas, exemplo:*/ 
+update cursos
+set nome = 'PHP', ano = '2015'
+where idcurso = '4'
+limit: 1; /* não irá afetar mais de uma linha*/
+
+/* Nesse exemplo não está limitando a linha e nem buscando chave primaria*/
+update cursos
+set ano = '2050', carga = '800'
+where ano = '2018'; /* irá alterar todas as linhas que tem o ano de 2018*/ 
+
+/*Deletar Linhas buscando pela chave primaria*/ 
+delete from cursos 
+where idcurso ='8';
+
+/* deletando todos os anos que tem 2050 da tabela, limitando 2 alterações */
+delete from cursos
+where ano ='2050'
+limit 2; /*limitação*/
+
+/* Remove todas as linhas da Tabela */
+truncate cursos;
+
+
+
+
+
+
+
