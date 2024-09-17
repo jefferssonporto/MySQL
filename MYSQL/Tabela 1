@@ -1,14 +1,39 @@
-create database cadastro
+create database cadastro /* criação do database */ 
 default character set utf8
-default collate utf8_general_ci;
+default collate utf8_general_ci; /* definição de ortofrafia*/ 
 
-create table pessoas(
+create table pessoas( /* nome da tabela */ 
 id int not null auto_increment,
-nome varchar(30) not null, 
+nome varchar(30) not null, /* quantidade total de letras (30) */
 nascimento date,
-sexo enum ('M','F'), 
-peso decimal(5,2), 
-altura decimal(3,2),
+sexo enum ('M','F'), /* especificado que só entraá a opção M e F */
+peso decimal(5,2), /* (5) Quantidade de total de digitos e (2) quantidade de digitos depois da virgula*/
+altura decimal(3,2), /* (3) casas ao todo e (2) decimais */ 
 nacionalidade varchar(20) default 'Brasil',
 primary key (id)
 ) default charset = utf8;
+
+/* Inserindo informação na tabela */
+insert into pessoas /* inserir na tabela pessoas*/ 
+(nome, nascimento, sexo, peso, altura, nacionalidade) /* por ser auto_increment indentificará automaticamente*/
+values /* valores da tabela, informações*/ 
+('Godofredo','1984-01-02','M','78.5','1,83','Brasil');
+
+/* se as informações estiverem ordem pode ser feito dessa maneira mais simples*/
+insert into pessoas values
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+(default,'Adalgiza','1930-11-2','F','63.2','1,75','Irlanda');
+
+/* para inserir um valor da tabela de uma vez basta separar por uma virgula (,) e finalizar com ponto e virgula (;)*/
+insert into pessoas 
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+values
+(default,'Ana','1975-12-22','F','52.3','1,45','EUA'),
+(default,'Pedro','2000-07-15','M','52.3','1,45','Brasil'),
+(default,'Maria','1999-05-30','F','75.9','1,70','Portugal'),
+(default,'Claudio','1975-04-22','M','99','2','Brasil');
+
+/*Selecionar a tabela, selecionar tudo da tabela pessoas*/
+select * from pessoas;
+
+
