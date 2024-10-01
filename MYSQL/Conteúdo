@@ -51,3 +51,10 @@ SERVER - DATA EXPORT - SELECIONA O DATABASE E O SCHEMA - START EXPORT
 
 /*Vai importar o DATABASE já pronto*/
 SERVER - DATA IMPORT - SELECIONA O DATABASE - START IMPORT
+
+/*mostra o comando usado para a criação da tabela*/
+Console: show create table nomedatabela;
+
+/*mostra o comando usado para a criação do Database*/
+Console: show create database nomedoDataBase;
+
