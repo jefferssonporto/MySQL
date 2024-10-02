@@ -78,6 +78,10 @@ create table if not exists nomedatabela;
 drop table if exists nomedatabela;
 drop table nomedatabela;
 
+/*Muar o nome da Tabela RENAME TO */
+ALTER TABLE `cadastro`.`Pessoas` 
+RENAME TO  `cadastro`.`novonome` ;
+
 
 
 

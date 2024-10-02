@@ -103,5 +103,62 @@ order by nome;
     select nome, descricao, totaulas from cursos
 	where carga > 35 or totaulas <30;
 
+/*Operador like, todo curso que começa com a letra A */
+    select * from cursos
+    where nome like 'A%';
+
+/*Todo curso que terminam com a letra A */
+    select * from cursos
+    where nome like '%A';
+
+/*Todo curso que tenham a letra A em qualquer parte da palavra */
+    select * from cursos
+    where nome like '%A%';
+
+/*Todo curso que não tenham a letra A em qualquer parte da palavra */
+    select * from cursos
+    where nome not like '%A%';
+
+/*Todo curso que começa com PH e termine com a letra P*/
+    select * from cursos
+    where nome like 'ph%p%';
+
+/* _=sublinhado/underline - Todo curso que começa com PH e termine com alguma coisa, algum caractere */
+    select * from cursos
+    where nome like 'ph%p_';
+
+/*distinct - seleciona sem repetição todas as nacionaliades */
+    select distinct nacionalidade from Pessoas;
+
+/*Count(*) - Conta a quantidade de cursos registrado */
+       select count(*) from cursos;
+/*COUNT() = Contar Nesse exemplo é o total de cursos que tem a carga maior de 40, o Count(*) soma o total de resgistros */
+select count(*) from cursos where carga >40;
+
+/*COUNT() = Contar - Conta a quantidade de nomes registados na tabela cursos */
+select count(nome) from cursos;
+
+/* MAX = Máximo - Seleciona qual é a maior carga entre os cursos */
+select max(carga) from cursos;
+
+/* MIN() = Minimo Seleciona qual é a menor carga entre os cursos */
+select min(carga) from cursos;
+
+/* MIN() = Minimo - Seleciona todos os nome com o minimo de aulas da tabela curso onde o ano é em 2016 */
+select nome, min(totaulas) from cursos where ano = '2016';
+
+/* SUM() = Somatório - Soma total de aulas da tabela curso do ano de 2016 */
+select sum(totaulas) from cursos where ano = '2016';
+
+/*AVG = Média - No caso ele soma e divide pela quantidade de cursos, faz a média */
+select AVG(totaulas) from cursos;
+
+
+
+
+
+
+
+
 
 
