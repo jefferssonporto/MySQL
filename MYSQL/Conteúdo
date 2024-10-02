@@ -20,7 +20,7 @@ Observação:
 Constraint - não tem aspas
 Default - Padrão 
 DDL - Data Definition Language / Create Database; Create Table; Drop Table; Alter Table
-DML - Data Manipulation Language / Insert Into; UPDATE; DELETE; TRUNCATE.
+DML - Data Manipulation Language / Insert Into; UPDATE; DELETE; TRUNCATE; SELECT
 
 
 COMANDOS:
@@ -44,6 +44,7 @@ insert into - inserir dados
 UNIQUE - não deixa colocar 2 cursos com o mesmo nome
 unsigned - (sem sinal) Economiza 1byte para cada registro que tem a carga registrada
 
+Operadores Relacionais: =(Igual); !=ou<>(Diferente) ;<(menor) ;>(Maior) ;=>(Menor igual) ;=<(Maior igual)
 
 /*Salvar uma cópia do Banco de Dados EXPORT e IMPORT */
 SERVER - DATA EXPORT - SELECIONA O DATABASE E O SCHEMA - START EXPORT
@@ -57,4 +58,50 @@ Console: show create table nomedatabela;
 
 /*mostra o comando usado para a criação do Database*/
 Console: show create database nomedoDataBase;
+
+/*order by -  ordernar / Ordenar em ordem do nome alfabética ascendente, asc é opcional*/
+select * from cursos;  /* ou */   select * from cursos;    
+order by nome;         /* ou */    order by nome asc;
+
+/*Ordenar em ordem do nome inverso, descendente */
+select * from cursos
+order by nome desc;
+
+/* Para seleção especifica apenas escrever e não utilizar o * (asteristico significa todas as colunas), selecionar apenas nome, cargo e ano */
+select nome, carga, ano from cursos
+order by nome;
+
+/* Primeiro ordenar por ano e depois ordena por nome */
+select ano, nome, carga,  from cursos
+order by ano, nome;
+
+/* Filtrar somente as linhas, tabela cursos, onde o ano é 2016, ordenado pelo nome */
+select *  from cursos
+where ano = '2016' /*aspa é opcional*/
+order by nome;
+
+/*selecionar somente nome e descrição da tabela cursos, onde o ano menor ou igual a 2015, ordenado pelo nome */
+select nome, descricao from cursos
+where ano <= 2015
+order by nome;
+
+/*Selecionar o nome e ano da tabela cursos, onde somente o ano entre 2014 e 2016 e oerdenado por ano do maior para o menor e nome ordem alfabética*/
+	select nome, ano from cursos
+	where ano between 2014 and 2016
+    order by ano desc, nome asc;
+
+/* Utilizando o IN vai mostrar somente uma pesquisa especifica, no caso em 2014 e 2016 */ 
+    select nome, descricao, ano from cursos
+	where ano in (2014, 2016)
+    order by ano;
+
+/*Utilizando o AND só irá aparecer quando todas as informações se enquadram no filtro */
+    select nome, descricao, totaulas from cursos
+	where carga > 35 and totaulas <30;
+
+/*Utilizando o or basta um filtro se verdadeiro que aparecerá */
+    select nome, descricao, totaulas from cursos
+	where carga > 35 or totaulas <30;
+
+
 
