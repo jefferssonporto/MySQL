@@ -1,0 +1,36 @@
+create table assiste ( 
+id int not null auto_increment,
+data date,
+idpessoa int,
+idcurso int,
+primary key (id),
+foreign key (idpessoa) references pessoas (id),
+foreign key (idcurso) references cursos (idcurso)
+) default charset = utf8;
+ 
+ insert into assite values 
+ (default, '2014-03-01','1', '2');
+ INSERT INTO `cadastro`.`assiste` (`data`, `idpessoa`, `idcurso`) VALUES ('2014-01-01', '22', '12');
+INSERT INTO `cadastro`.`assiste` (`data`, `idpessoa`, `idcurso`) VALUES ('2015-12-22', '3', '6');
+INSERT INTO `cadastro`.`assiste` (`data`, `idpessoa`, `idcurso`) VALUES ('2014-03-01', '1', '2');
+INSERT INTO `cadastro`.`assiste` (`data`, `idpessoa`, `idcurso`) VALUES ('2013-05-03', '2', '5');
+
+/*Dados das 3 tabelas */
+select * from pessoas P
+join assiste a 
+on p.id = a.idpessoa;
+
+/* mostrar  o ID, nome  e o código da tabela pessoas junto com ID da tabela assiste */
+select a.id, p.nome, a.idpessoa from pessoas P
+join assiste a 
+on p.id = a.idpessoa;
+
+
+/*junção das 3 tabelas, relaciona a chave primaria com a chave estrangeira das 2 tabelas a tabela Assite*/
+select p.nome, c.nome from pessoas p 
+ join assiste a 
+ on p.id = a.idpessoa
+ join cursos c
+ on c.idcurso = a.idcurso
+ order by p.nome;
+

@@ -153,6 +153,95 @@ select sum(totaulas) from cursos where ano = '2016';
 /*AVG = Média - No caso ele soma e divide pela quantidade de cursos, faz a média */
 select AVG(totaulas) from cursos;
 
+/*Distinguir - gera uma listagem com todas as cargas possíveis, no caso do exemplo ordenador por carga.*/
+select distinct carga from cursos order by carga;
+
+/* Agrupando Registros - vai selecionar as tuplas, os registros agrupados por carga*/
+/*group by - significa agrupar por */
+select carga from cursos group by carga; 
+
+/* Acrentando o count() ele contará a quantidade de cursos agrupados por carga */
+select carga, COUNT(nome) from cursos group by carga; 
+
+/*Irá mostrar 2H cursos de 40H e 4 cursos de 60 */
+select carga, COUNT(nome) from cursos where totaulas = 30;
+select * from crusos where totaulas = 30; 
+
+/*Selecionar somente quem tem o contador maior que 3*/
+select carga, conunt(nome) from cursos 
+group by carga having count(nome) >3;
+
+/*seleciona os anos da tabela cursos, onde o total de aulas seja acima de 30, vai agrupar a seleção por ano e dentro do agrupamento só vai mostrar acima de 2013 ordenador descendente*/
+select ano, count(*) from cursos where totaulas >30 group by ano
+having ano > 2013 order by count(*) desc;
+
+/*Média de horas de todos os cursos*/
+select AVG(carga) from cursos
+
+/* Seleciona a carga e o total de horas dos cursos onde o ano seja acima de 2015, vou agrupar por carga, mas irá mostrar somente quem está acima da carga, seleciona, filtra, agrupa e mostra somente o resultado que está acima de outro SELECT*/
+select carga, count(*) from cursos
+where ano > 2015 group by carga 
+having carga (select AVG(carga) from cursos );
+
+
+MODELO RELACIONAL:
+um pra um: decido a entidade dominante e jogo a chave estrangeira para a entidade dominante, os atributos precisam ser compativeis
+um pra n / um pra muitos - pega a chave primaria do lado um e joga no lado muitos como chave estrangeira.
+n pra n / muito pra muitos - 3 entidades ligadas 2 a 2 com relacionamento um pra muitos, chave primaria vai pro lado MUITOS. chaves primarias vão para a entidade central. 
+
+Enginer para criação de tabelas compativeis para chaves estrangeiras: INNODB, XTRADB, MyISAM.
+ACID - Atomica, Consistência, Isolamento, Durabilidade
+
+/*Adicionando uma coluna e a tornando para chave primaria Foreign key, deverá aparecer tipo MUL que seria Multipla*/
+alter table pessoas add column cursopreferido int;
+alter table pessoas add foreign key (cursopreferido)
+references cursos (idcurso);
+
+/* Aluno 1 vai gostar do curso 6 */
+update pessoas set cursooreferido = '6' where id = '1';
+
+/* InnerJoin ou Join vai somente fazer quais tem a ligações */
+/* Sempre que utilizar o JOIN precisa utilizar o ON */
+/* Join - juntar todos os curos a pessoas */
+select pessoas.nome, pessoas.cursopreferido, cursos.nome, cursos.ano
+ from pessoas inner join cursos; 
+
+
+/*Ligação da chave primaria com a cheve estrageira pessoas */
+select pessoas.nome, pessoas.cursopreferido, cursos.nome, cursos.ano
+ from pessoas inner join cursos on cursos.idcurso = pessoas.cursopreferido order by pessoas.nome;;
+
+/* utilizando a "a" para apelidor/abreviar*/ 
+ select p.nome, c.nome, c.ano
+ from pessoas as p inner join cursos as c on c.idcurso = p.cursopreferido
+ order by p.nome;
+
+ /*left outer joint ou left join - vai aparecer dando preferência a tabela da esquerda, que no caso é pessoas*/
+ select p.nome, c.nome, c.ano
+ from pessoas as p left outer join cursos as c on c.idcurso = p.cursopreferido;
+
+/* A preferência vai para a tabela ao lado direito, que no caso é o cursos */ 
+ select p.nome, c.nome, c.ano
+ from pessoas as p right outer join cursos as c on c.idcurso = p.cursopreferido;
+
+
+Criação de 
+
+ select p.nome, c.nome from pessoas p 
+ join assiste a 
+ on p.id = a.idpessoa
+ join cursos c
+ on c.idcurso = a.idcurso
+ order by p.nome;
+
+/* junção de 3 tabelas*/
+ select p.nome, c.nome from pessoas p 
+ join assiste a 
+ on p.id = a.idpessoa
+ join cursos c
+ on c.idcurso = a.idcurso
+ order by p.nome;
+
 
 
 
